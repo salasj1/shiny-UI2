@@ -4,7 +4,7 @@ library(plotly)
 library(DT)
 library(leaflet)
 library(shinyWidgets)
-library(tuproyecto)
+library(PaquetePrueba)
 library(htmltools)
 library(httpuv)
 
@@ -17,6 +17,7 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
+    class = "dashboard2",
     tags$head(mypackageDependencies()),
     tabItems(
       tabItem(tabName = "tab1",
@@ -58,4 +59,4 @@ server <- function(input, output) {
 app <- shinyApp(ui, server)
 
 # Ejecuta la aplicación en un host y puerto específicos
-runApp(app, host = "127.0.0.1", port = 8081)
+runApp(app, host = "127.0.0.1", port = 8086)
