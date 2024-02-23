@@ -7,7 +7,7 @@ library(shinyWidgets)
 library(PaquetePrueba)
 library(htmltools)
 library(httpuv)
-
+library(shinyjs)
 ui <- dashboardPage(
   dashboardHeader(title = "Dashboard 2"),
   dashboardSidebar(
@@ -17,8 +17,9 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
-    class = "dashboard2",
+    class = "dashboard",
     tags$head(mypackageDependencies()),
+    useShinyjs(),
     tabItems(
       tabItem(tabName = "tab1",
               fluidRow(
@@ -53,6 +54,8 @@ server <- function(input, output) {
     req(input$variable)
     hist(mtcars[[input$variable]], main = paste("Histograma de", input$variable), xlab = input$variable)
   })
+  #Cambiar el color de fondo del dashboard
+  runjs("applyDashboardStyle('blue');")
 }
 
 # Define la aplicación Shiny
