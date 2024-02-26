@@ -52,7 +52,8 @@ server <- function(input, output) {
 
   output$histPlotAle <- renderPlot({
     req(input$variable)
-    hist(mtcars[[input$variable]], main = paste("Histograma de", input$variable), xlab = input$variable)
+    un_grafico <- ggplot(mtcars, aes_string(x = input$variable)) + geom_histogram()
+    un_grafico %>% PaquetePrueba::aplicaEstilo(background_color = 'green')
   })
   #Cambiar el color de fondo del dashboard
   runjs("applyDashboardStyle('blue');")
