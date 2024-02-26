@@ -53,7 +53,21 @@ server <- function(input, output) {
   output$histPlotAle <- renderPlot({
     req(input$variable)
     un_grafico <- ggplot(mtcars, aes_string(x = input$variable)) + geom_histogram()
-    un_grafico %>% PaquetePrueba::aplicaEstilo(background_color = 'green')
+    un_grafico %>% aplicaEstilo(
+      background_color = 'green',
+      fill_color = 'lightblue',
+      border_color = 'black',
+      titulo = "Mi Gráfico",
+      etiqueta_x = "Variable",
+      etiqueta_y = "Frecuencia",
+      posicion_leyenda = "bottom",
+      family_title = "Times New Roman",
+      size_title = 21,
+      family_axis_x = "Arial",
+      size_axis_x = 14,
+      family_axis_y = "Comic Sans",
+      size_axis_y = 14
+    )
   })
   #Cambiar el color de fondo del dashboard
   runjs("applyDashboardStyle('blue');")
